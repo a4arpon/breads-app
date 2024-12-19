@@ -1,5 +1,6 @@
-import { ScrollViewStyleReset } from 'expo-router/html';
-import React from 'react';
+import { ScrollViewStyleReset } from "expo-router/html"
+// biome-ignore lint/style/useImportType: <explanation>
+import React from "react"
 
 // This file is web-only and used to configure the root HTML for every
 // web page during static rendering.
@@ -11,7 +12,10 @@ export default function Root({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
 
         {/* 
           Disable body scrolling on web. This makes ScrollView components work closer to how they do on native. 
@@ -20,12 +24,13 @@ export default function Root({ children }: { children: React.ReactNode }) {
         <ScrollViewStyleReset />
 
         {/* Using raw CSS styles as an escape-hatch to ensure the background color never flickers in dark-mode. */}
+        {/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
         <style dangerouslySetInnerHTML={{ __html: responsiveBackground }} />
         {/* Add any additional <head> elements that you want globally available on web... */}
       </head>
       <body>{children}</body>
     </html>
-  );
+  )
 }
 
 const responsiveBackground = `
@@ -36,4 +41,4 @@ body {
   body {
     background-color: #000;
   }
-}`;
+}`
